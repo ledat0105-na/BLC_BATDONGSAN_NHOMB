@@ -1,4 +1,4 @@
-# 2.5. Thành viên 5 – Smart Contract và các từ khóa quan trọng
+Thành viên 5 – Smart Contract và các từ khóa quan trọng
 
 **Đề tài:** Ứng dụng Blockchain trong quản lý quyền sở hữu và giao dịch bất động sản  
 
