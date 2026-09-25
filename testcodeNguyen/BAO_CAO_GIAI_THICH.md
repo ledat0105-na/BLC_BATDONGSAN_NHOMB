@@ -1,3 +1,8 @@
+
+# 📖 Báo cáo Giải thích Smart Contract — RealEstate.sol
+
+### Hệ thống Quản lý Bất Động Sản trên Blockchain
+
 # 📖 Báo cáo Giải thích Smart Contract — RealEstate.sol
 ### Hệ thống Quản lý Bất Động Sản trên Blockchain
 > Dành cho người mới bắt đầu — giải thích từ nền tảng đến chi tiết code
@@ -10,6 +15,12 @@
 
 Hãy tưởng tượng blockchain như một **cuốn sổ ghi chép khổng lồ** được chia sẻ cho hàng nghìn máy tính trên toàn thế giới cùng giữ. Mỗi khi ai đó ghi thêm thông tin vào cuốn sổ đó, **tất cả các máy đều cập nhật** và **không ai có thể xóa hay sửa** những gì đã ghi.
 
+| Đặc điểm             | Giải thích đơn giản                                        |
+| ------------------------ | --------------------------------------------------------------- |
+| **Phi tập trung** | Không có một máy chủ trung tâm duy nhất nào kiểm soát |
+| **Bất biến**     | Dữ liệu đã ghi không thể xóa hay sửa                    |
+| **Minh bạch**     | Ai cũng có thể xem mọi giao dịch                           |
+| **Tự động**     | Hợp đồng tự thực thi khi thỏa điều kiện                |
 | Đặc điểm | Giải thích đơn giản |
 |---|---|
 | **Phi tập trung** | Không có một máy chủ trung tâm duy nhất nào kiểm soát |
@@ -101,6 +112,19 @@ if (msg.sender != chuHopDong) revert KhongPhaoChuHopDong();
 
 **Gas** là phí bạn trả cho blockchain để thực hiện mỗi thao tác. Tiết kiệm gas = tiết kiệm tiền thật.
 
+| Tên lỗi                            | Khi nào xảy ra                                 |
+| ------------------------------------ | ------------------------------------------------ |
+| `KhongPhaoChuHopDong()`            | Người thường cố làm việc của Cơ quan NN |
+| `KhongPhaoChuSoHuu(id)`            | Cố thao tác BĐS không phải của mình       |
+| `ChuSoHuuKhongTheMua(id)`          | Chủ BĐS cố tự mua BĐS của mình            |
+| `TaiSanKhongTonTai(id)`            | Truy cập ID BĐS không tồn tại               |
+| `DangNiemYetRoi()`                 | Niêm yết lần 2 khi đang niêm yết           |
+| `TaiSanChuaNiemYet()`              | Cố mua BĐS chưa được niêm yết            |
+| `DaXacNhanRoi()`                   | Xác nhận lần 2 khi đã xác nhận            |
+| `DangNiemYetHayHuyTruoc()`         | Chuyển nhượng khi đang niêm yết            |
+| `ThanhToanKhongDu(required, sent)` | Gửi ETH ít hơn giá niêm yết                |
+| `ChuyenTienThatBai()`              | Lỗi kỹ thuật khi chuyển ETH                  |
+| `KhongCoPhiDeRut()`                | Rút phí khi contract không có ETH            |
 | Tên lỗi | Khi nào xảy ra |
 |---|---|
 | `KhongPhaoChuHopDong()` | Người thường cố làm việc của Cơ quan NN |
@@ -150,6 +174,7 @@ struct Property {
 ```
 
 **Về các kiểu dữ liệu:**
+
 - `uint256`: Số nguyên dương (0 đến 2^256). "uint" = unsigned integer
 - `address`: Địa chỉ ví Ethereum, 20 bytes, dạng `0xAbCd...1234`
 - `bool`: Giá trị đúng/sai (`true` hoặc `false`)
@@ -187,6 +212,7 @@ LichSuGiaoDich[]              public lichSuGiaoDich;
 **Biến trạng thái** = dữ liệu được lưu **vĩnh viễn** trên blockchain (không biến mất khi hàm kết thúc).
 
 ### Từ khóa `public`:
+
 Thêm `public` vào biến → Solidity **tự động tạo hàm đọc** cho biến đó. Ai cũng có thể đọc giá trị nhưng không ai được sửa trực tiếp từ bên ngoài.
 
 ### `mapping` là gì?
@@ -245,6 +271,7 @@ event TaiSanDaXacNhan(uint256 indexed id, address indexed chuSoHuu);
 **Từ khóa `indexed`:** Cho phép tìm kiếm nhanh theo trường đó. Ví dụ: "tìm tất cả BĐS của địa chỉ Alice" — `indexed` trên `chuSoHuu` giúp tìm kiếm nhanh hơn nhiều.
 
 **Sử dụng trong code:**
+
 ```solidity
 emit TaiSanDaDangKy(newId, _diaChi, msg.sender, _giaTri);
 //    ↑ từ khóa     ↑ tên event   ↑ các tham số
@@ -276,6 +303,7 @@ modifier taiSanTonTai(uint256 _id) {
 > **Ví dụ:** Như bảo vệ ở cửa tòa nhà — kiểm tra thẻ trước khi cho vào. Ký hiệu `_;` nghĩa là "sau khi kiểm tra xong, cho vào bên trong".
 
 **Ví dụ luồng thực thi:**
+
 ```
 Ai đó gọi niemYetBan(1, 15 ETH)
          ↓
@@ -324,6 +352,7 @@ function dangKyTaiSan(
 ```
 
 **Luồng hoạt động:**
+
 ```
 1. Kiểm tra địa chỉ không rỗng        → DiaChiTrong nếu rỗng
 2. Kiểm tra giá trị > 0               → GiaTriKhongHopLe nếu = 0
@@ -336,6 +365,15 @@ function dangKyTaiSan(
 ```
 
 **Từ khóa quan trọng:**
+
+| Từ khóa           | Ý nghĩa                                                                |
+| ------------------- | ------------------------------------------------------------------------ |
+| `external`        | Chỉ gọi từ bên ngoài contract (tiết kiệm gas hơn`public`)      |
+| `calldata`        | Dữ liệu đầu vào đọc trực tiếp, không copy vào bộ nhớ        |
+| `unchecked`       | Bỏ qua kiểm tra tràn số (safe vì không thể đăng ký 2^256 BĐS) |
+| `block.timestamp` | Thời gian của block hiện tại (số giây Unix)                        |
+
+**Ví dụ thực tế:**
 
 | Từ khóa | Ý nghĩa |
 |---|---|
@@ -368,6 +406,7 @@ function niemYetBan(
 ```
 
 **Luồng:**
+
 ```
 [Modifier] BĐS phải tồn tại
 [Modifier] Người gọi phải là chủ sở hữu
@@ -379,6 +418,7 @@ function niemYetBan(
 ```
 
 **Ví dụ:**
+
 ```
 Alice (chủ BĐS #1) gọi: niemYetBan(1, 15_ETH)
 
@@ -426,6 +466,7 @@ function muaTaiSan(uint256 _id) external payable taiSanTonTai(_id) { ... }
 > Nếu chuyển tiền trước rồi mới cập nhật trạng thái, kẻ tấn công có thể gọi lại hàm trong khi tiền đang chuyển — gọi là **Reentrancy Attack**. CEI ngăn chặn điều này bằng cách luôn cập nhật trạng thái TRƯỚC khi chuyển tiền.
 
 **Ví dụ:**
+
 ```
 Bob gọi: muaTaiSan(1) với {value: 20 ETH}  ← BĐS giá 15 ETH
 
@@ -453,6 +494,7 @@ function chuyenNhuong(
 Khác với `muaTaiSan` (có tiền), `chuyenNhuong` là **chuyển miễn phí** — không cần gửi ETH.
 
 **Luồng:**
+
 ```
 [Modifier] BĐS tồn tại, người gọi là chủ
 1. Người nhận != address(0)          → DiaChiNguoiNhanKhongHopLe
@@ -478,6 +520,7 @@ function xemLichSuTaiSan(uint256 _id)
 **Từ khóa `view`:** Hàm chỉ **đọc** dữ liệu, không thay đổi gì → **miễn phí gas**.
 
 **Thuật toán 2 vòng lặp:**
+
 ```
 Vòng 1: Đếm bao nhiêu bản ghi thuộc về BĐS _id
          → Biết kích thước → cấp phát mảng đúng size
@@ -487,6 +530,7 @@ Vòng 2: Điền dữ liệu vào mảng → Trả về
 Solidity **không thể thay đổi kích thước mảng memory** sau khi khởi tạo — phải biết trước kích thước, nên cần 2 vòng.
 
 **Tối ưu gas trong vòng lặp:**
+
 ```solidity
 uint256 len = lichSuGiaoDich.length; // Cache 1 lần (1 SLOAD)
 for (uint256 i = 0; i < len;) {     // Không đọc .length lặp lại
@@ -532,6 +576,11 @@ function rutPhiGiaoDich() external chiChuHopDong {
 
 **Tại sao dùng `.call` thay `.transfer`?**
 
+| `.transfer()`                       | `.call()`                      |
+| ------------------------------------- | -------------------------------- |
+| Giới hạn 2300 gas                   | Không giới hạn gas            |
+| Có thể thất bại với smart wallet | Hoạt động với mọi loại ví |
+| Cũ, không khuyến dùng             | Chuẩn hiện đại               |
 | `.transfer()` | `.call()` |
 |---|---|
 | Giới hạn 2300 gas | Không giới hạn gas |
@@ -617,6 +666,15 @@ Bob gọi chuyenNhuong(1, Charlie.address)
 
 ## 📊 Phần 12 — Bảng tóm tắt toàn bộ Contract
 
+| Thành phần         | Số lượng | Vai trò                         |
+| -------------------- | ----------- | -------------------------------- |
+| Custom Errors        | 14          | Thông báo lỗi tiết kiệm gas |
+| Structs              | 2           | Khuôn mẫu dữ liệu            |
+| State Variables      | 6           | Lưu trữ trên blockchain       |
+| Events               | 4           | Thông báo sự kiện            |
+| Modifiers            | 3           | Kiểm soát quyền truy cập     |
+| Functions (external) | 9           | Các chức năng chính          |
+| Functions (internal) | 1           | Hàm hỗ trợ nội bộ           |
 | Thành phần | Số lượng | Vai trò |
 |---|---|---|
 | Custom Errors | 14 | Thông báo lỗi tiết kiệm gas |
@@ -631,6 +689,24 @@ Bob gọi chuyenNhuong(1, Charlie.address)
 
 ## 💡 Phần 13 — Bảng từ khóa Solidity hay gặp
 
+| Từ khóa           | Ý nghĩa                                                                  |
+| ------------------- | -------------------------------------------------------------------------- |
+| `public`          | Ai cũng truy cập được từ trong lẫn ngoài                           |
+| `external`        | Chỉ gọi từ bên ngoài contract (gas rẻ hơn`public`)                |
+| `internal`        | Chỉ gọi từ bên trong hoặc contract con kế thừa                      |
+| `view`            | Chỉ đọc, không sửa —**miễn phí gas** khi gọi                |
+| `payable`         | Hàm/địa chỉ có thể nhận ETH                                         |
+| `storage`         | Biến tham chiếu trực tiếp tới blockchain (tốn gas)                   |
+| `memory`          | Biến tạm thời trong hàm, xóa khi hàm kết thúc (rẻ hơn)           |
+| `calldata`        | Dữ liệu đầu vào, chỉ đọc, không copy (rẻ nhất)                  |
+| `msg.sender`      | Địa chỉ ví của**người đang gọi hàm**                       |
+| `msg.value`       | Số ETH (Wei) gửi kèm theo lệnh gọi hàm                               |
+| `block.timestamp` | Thời gian block hiện tại (giây Unix từ 01/01/1970)                    |
+| `emit`            | Phát ra một Event lên blockchain                                        |
+| `revert`          | Hủy toàn bộ giao dịch, khôi phục trạng thái ban đầu              |
+| `unchecked`       | Bỏ qua kiểm tra tràn số (tiết kiệm gas, chỉ dùng khi an toàn)     |
+| `address(0)`      | Địa chỉ zero — nghĩa là "không có ai" / địa chỉ không hợp lệ |
+| `address(this)`   | Địa chỉ của chính contract đang chạy                                |
 | Từ khóa | Ý nghĩa |
 |---|---|
 | `public` | Ai cũng truy cập được từ trong lẫn ngoài |
@@ -653,6 +729,7 @@ Bob gọi chuyenNhuong(1, Charlie.address)
 ---
 
 > **Các file trong dự án:**
+>
 > - [RealEstate.sol](file:///d:/BlockChain/RealEstate.sol) — Smart contract chính (đã tối ưu v2)
 > - [RealEstate.test.js](file:///d:/BlockChain/test-project/test/RealEstate.test.js) — 60 bài kiểm thử tự động
 > - [hardhat.config.js](file:///d:/BlockChain/test-project/hardhat.config.js) — Cấu hình môi trường test
