@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract RealEstateEscrow {
+    struct Property {
+        uint256 id;
+        address payable seller;
+        uint256 price;
+        bool isSold;
+    }
+
+    mapping(uint256 => Property) public properties;
+
+    event PropertyPurchased(uint256 indexed propertyId, address buyer, uint256 pricePaid);
+    event RefundIssued(address indexed buyer, uint256 amount);
+
+    function buyProperty(uint256 _propertyId) external payable {
+        Property storage prop = properties[_propertyId];
+        
+        // Kiểm tra bất động sản hợp lệ
+        require(!prop.isSold, "Bat dong san da duoc ban");
+        
+        // Require 4: Kiểm tra điều kiện đủ tiền
+        require(msg.value >= prop.price, "Thanh toan thieu: So tien khong du de mua BDS");
+
+        // Cập nhật trạng thái
+        prop.isSold = true;
+
+        // Xử lý trường hợp thanh toán dư (Refund tiền thừa)
+        if (msg.value > prop.price) {
+            uint256 refundAmount = msg.value - prop.price;
+            (bool refundSuccess, ) = payable(msg.sender).call{value: refundAmount}("");
+            require(refundSuccess, "Hoan tien du that bai");
+            emit RefundIssued(msg.sender, refundAmount);
+        }
+
+        // Chuyển đúng số tiền giá trị BĐS cho người bán (hoặc giữ lại Escrow)
+        (bool paySuccess, ) = prop.seller.call{value: prop.price}("");
+        require(paySuccess, "Chuyen tien cho nguoi ban that bai");
+
+        emit PropertyPurchased(_propertyId, msg.sender, prop.price);
+    }
+}
