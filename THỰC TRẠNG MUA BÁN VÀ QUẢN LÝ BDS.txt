@@ -1,0 +1,142 @@
+# THỰC TRẠNG MUA BÁN VÀ QUẢN LÝ BẤT ĐỘNG SẢN TẠI VIỆT NAM HIỆN NAY
+
+## 1. Thực trạng thị trường và hoạt động mua bán bất động sản
+
+Đến tháng 9/2026, thị trường bất động sản Việt Nam đang trong quá trình phục hồi và đồng thời có sự chuyển đổi mạnh về phương thức quản lý dữ liệu. Các quy định của Luật Đất đai 2024, Luật Nhà ở 2023 và Luật Kinh doanh bất động sản 2023 cùng các văn bản hướng dẫn đã được triển khai trong thực tế, tạo ra nhiều thay đổi đối với hoạt động quản lý và giao dịch bất động sản.
+
+Theo báo cáo của Bộ Xây dựng về thị trường bất động sản quý II/2026, có 113 dự án nhà ở thương mại được cấp phép mới với khoảng 103.205 căn, tăng 194,8% so với quý I/2026 và cao hơn 3 lần so với cùng kỳ năm 2025. Ngoài ra, có 131 dự án với 59.073 căn đủ điều kiện bán nhà ở hình thành trong tương lai.
+
+Tuy nhiên, số lượng giao dịch thành công trong quý II/2026 đạt khoảng 100.005 giao dịch, chỉ bằng 71,5% so với quý I/2026. Điều này cho thấy nguồn cung đang được cải thiện nhưng khả năng hấp thụ của thị trường vẫn còn những khó khăn nhất định.
+
+Hiện nay, một giao dịch bất động sản vẫn phải trải qua nhiều bước và có sự tham gia của nhiều chủ thể. Quy trình phổ biến có thể khái quát như sau:
+
+Người bán → Môi giới hoặc sàn giao dịch → Người mua → Kiểm tra thông tin pháp lý → Thỏa thuận, đặt cọc → Ký kết hợp đồng → Công chứng → Thực hiện nghĩa vụ tài chính → Đăng ký biến động.
+
+Quy trình nhiều bước là cần thiết nhằm bảo đảm an toàn pháp lý. Tuy nhiên, điều này đồng thời tạo ra nhu cầu trao đổi và kiểm chứng dữ liệu giữa nhiều bên khác nhau.
+
+## 2. Thực trạng số hóa quản lý bất động sản năm 2026
+
+Một trong những thay đổi quan trọng nhất của năm 2026 là Nhà nước đang chuyển mạnh từ quản lý hồ sơ bất động sản truyền thống sang quản lý dựa trên dữ liệu và định danh điện tử.
+
+### 2.1. Dữ liệu Giấy chứng nhận được khai thác thay thế giấy tờ
+
+Ngày 02/02/2026, Bộ Nông nghiệp và Môi trường ban hành Quyết định số 441/QĐ-BNNMT về kết nối và khai thác dữ liệu thông tin Giấy chứng nhận quyền sử dụng đất, quyền sở hữu tài sản gắn liền với đất.
+
+Theo đó, khi dữ liệu trong Cơ sở dữ liệu quốc gia về đất đai đáp ứng điều kiện khai thác, thông tin về Giấy chứng nhận có thể được sử dụng thay thế giấy tờ trong thành phần hồ sơ khi giải quyết thủ tục hành chính.
+
+Các nhóm dữ liệu được chia sẻ bao gồm thông tin người sử dụng đất, chủ sở hữu tài sản, thông tin thửa đất, tài sản gắn liền với đất và những thông tin liên quan.
+
+Đây là bước chuyển quan trọng từ việc “chứng minh bằng giấy tờ” sang “xác minh thông qua dữ liệu”.
+
+### 2.2. Từ 01/03/2026: triển khai mã định danh điện tử cho bất động sản
+
+Nghị định số 357/2025/NĐ-CP có hiệu lực từ ngày 01/03/2026 quy định việc xây dựng và quản lý hệ thống thông tin, cơ sở dữ liệu về nhà ở và thị trường bất động sản.
+
+Một điểm đặc biệt quan trọng là việc hình thành mã định danh điện tử cho sản phẩm bất động sản.
+
+Mã định danh của sản phẩm nhà ở có thể liên kết nhiều nhóm thông tin như:
+
+- Mã định danh thửa đất;
+- Mã số thông tin dự án, công trình xây dựng;
+- Mã định danh địa điểm;
+- Dãy ký tự phục vụ định danh.
+
+Không chỉ bất động sản, hệ thống còn có mã định danh điện tử đối với chứng chỉ hành nghề môi giới bất động sản và một số chủ thể liên quan.
+
+Như vậy, thay vì chỉ quản lý bất động sản bằng tên dự án, địa chỉ hoặc hồ sơ giấy, hệ thống đang hướng đến việc mỗi đối tượng có một định danh điện tử để máy tính có thể nhận diện, liên kết và trao đổi dữ liệu.
+
+### 2.3. Từ 01/09/2026: định danh riêng cho thửa đất và công trình
+
+Một cột mốc rất mới là Nghị định số 326/2026/NĐ-CP về định danh địa điểm, ban hành ngày 19/08/2026 và có hiệu lực từ ngày 01/09/2026.
+
+Theo quy định này, các đối tượng như thửa đất, công trình kiến trúc, công trình xây dựng, kết cấu xây dựng và các địa điểm thuộc phạm vi áp dụng được cấp mã định danh để phục vụ quản lý, kết nối và khai thác dữ liệu trên phạm vi toàn quốc.
+
+Điều này cho thấy đến tháng 9/2026, Việt Nam đang hình thành nền tảng để một bất động sản không chỉ tồn tại dưới dạng hồ sơ giấy mà còn được biểu diễn bởi các định danh trong môi trường dữ liệu số.
+
+## 3. Những vấn đề vẫn còn tồn tại
+
+Mặc dù quá trình số hóa đang diễn ra mạnh mẽ, việc số hóa dữ liệu chưa đồng nghĩa với việc giải quyết hoàn toàn các vấn đề trong mua bán và quản lý bất động sản.
+
+### 3.1. Dữ liệu liên quan đến nhiều hệ thống
+
+Một bất động sản có nhiều nhóm thông tin: thửa đất, người có quyền sử dụng đất, tài sản trên đất, dự án, quy hoạch, xây dựng, giá, giao dịch và nghĩa vụ tài chính.
+
+Do đó, vấn đề đặt ra không chỉ là “có dữ liệu hay không” mà còn là khả năng liên kết, đồng bộ và xác minh dữ liệu giữa các hệ thống.
+
+### 3.2. Khó hình thành lịch sử giao dịch thống nhất cho người sử dụng
+
+Người mua bất động sản quan tâm không chỉ đến trạng thái hiện tại mà còn muốn biết lịch sử của tài sản: bất động sản đã thay đổi như thế nào, thông tin nào đã được cập nhật, giao dịch nào đã xảy ra và dữ liệu được cơ quan nào xác nhận.
+
+Các cơ sở dữ liệu hiện nay đang từng bước giải quyết bài toán số hóa và kết nối. Tuy nhiên, việc xây dựng một chuỗi lịch sử có khả năng truy xuất và xác minh xuyên suốt vòng đời của bất động sản vẫn là một bài toán đáng nghiên cứu.
+
+### 3.3. Có nhiều bên tham gia vào một giao dịch
+
+Một giao dịch bất động sản có thể liên quan đến người mua, người bán, môi giới, sàn giao dịch, tổ chức công chứng, ngân hàng và cơ quan quản lý nhà nước.
+
+Các bên cần trao đổi hoặc xác minh dữ liệu với nhau. Vì vậy, hệ thống cần giải quyết vấn đề “niềm tin” giữa nhiều chủ thể: dữ liệu do ai tạo ra, ai xác nhận, được thay đổi khi nào và có thể kiểm tra lịch sử thay đổi hay không.
+
+### 3.4. Cơ sở dữ liệu tập trung vẫn đặt ra bài toán kiểm chứng lịch sử
+
+Hệ thống quản lý truyền thống chủ yếu dựa trên cơ sở dữ liệu tập trung do các cơ quan hoặc tổ chức có thẩm quyền quản lý.
+
+Mô hình này có ưu điểm là xác định rõ trách nhiệm quản lý. Tuy nhiên, xét dưới góc độ công nghệ, hệ thống vẫn cần các cơ chế bảo đảm tính toàn vẹn dữ liệu, kiểm soát quyền chỉnh sửa, lưu vết thay đổi và cho phép các bên có quyền truy cập xác minh dữ liệu.
+
+Đây chính là một trong những vấn đề có thể nghiên cứu bằng Blockchain.
+
+## 4. Phân tích khả năng ứng dụng Blockchain
+
+Điểm đáng chú ý là những thay đổi trong năm 2026 đang tạo ra điều kiện thuận lợi hơn cho việc nghiên cứu Blockchain trong bất động sản.
+
+Trước đây, một câu hỏi lớn là:
+
+“Làm thế nào xác định duy nhất một bất động sản trên Blockchain?”
+
+Đến năm 2026, việc triển khai mã định danh điện tử cho sản phẩm bất động sản và mã định danh cho thửa đất, công trình tạo ra cơ sở để nghiên cứu giải quyết vấn đề này.
+
+Có thể xây dựng mô hình:
+
+**Bất động sản thực tế**
+
+↓
+
+**Mã định danh bất động sản / thửa đất**
+
+↓
+
+**Liên kết với bản ghi trên Blockchain**
+
+↓
+
+**Ghi nhận các sự kiện trong vòng đời bất động sản**
+
+↓
+
+**Truy xuất lịch sử và xác minh dữ liệu**
+
+Blockchain không nhất thiết lưu toàn bộ hồ sơ bất động sản. Những tài liệu lớn hoặc dữ liệu cá nhân có thể được lưu trong cơ sở dữ liệu truyền thống, trong khi Blockchain chỉ lưu mã định danh, giá trị băm (hash), thời gian và thông tin xác nhận cần thiết.
+
+Ví dụ, khi một giao dịch chuyển nhượng được cơ quan hoặc tổ chức có thẩm quyền xác nhận, hệ thống có thể tạo một bản ghi Blockchain chứa mã bất động sản, mã giao dịch, thời gian, trạng thái giao dịch và hash của hồ sơ liên quan.
+
+Khi hồ sơ được kiểm tra sau này, hệ thống tính lại hash và so sánh với dữ liệu đã ghi trên Blockchain. Nếu hai giá trị không giống nhau, có thể phát hiện dữ liệu đã thay đổi.
+
+Smart Contract cũng có thể được nghiên cứu để tự động hóa một số trạng thái của quy trình như:
+
+**Khởi tạo giao dịch → Chờ xác minh → Đã xác minh → Hoàn thành → Ghi nhận lịch sử.**
+
+Điều quan trọng là Blockchain không tự xác định một người có thực sự sở hữu mảnh đất hay không. Dữ liệu đầu vào vẫn cần được xác nhận bởi cơ quan hoặc chủ thể có thẩm quyền. Blockchain chủ yếu cung cấp một lớp công nghệ giúp ghi nhận, kiểm chứng và truy vết những dữ liệu đã được xác nhận.
+
+## 5. Kết luận
+
+Tính đến ngày 25/09/2026, quản lý bất động sản tại Việt Nam đang bước vào giai đoạn số hóa mạnh. Ba cột mốc đáng chú ý trong năm 2026 là việc khai thác dữ liệu Giấy chứng nhận trong Cơ sở dữ liệu quốc gia về đất đai, triển khai mã định danh điện tử cho sản phẩm bất động sản từ tháng 3/2026 và triển khai định danh địa điểm đối với thửa đất, công trình từ tháng 9/2026.
+
+Những thay đổi này giúp tăng khả năng kết nối và khai thác dữ liệu, nhưng đồng thời đặt ra bài toán về đồng bộ, truy xuất lịch sử, kiểm chứng tính toàn vẹn và chia sẻ dữ liệu giữa nhiều chủ thể.
+
+Do đó, hướng nghiên cứu Blockchain phù hợp không phải là “thay thế cơ quan quản lý bất động sản”, mà là xây dựng một **lớp xác thực và truy vết dữ liệu** bổ sung cho hệ thống hiện có.
+
+Một mô hình khả thi có thể kết hợp:
+
+**Cơ sở dữ liệu bất động sản hiện tại + Mã định danh bất động sản + Blockchain + Smart Contract**
+
+Trong đó, cơ quan có thẩm quyền chịu trách nhiệm xác nhận dữ liệu pháp lý; cơ sở dữ liệu truyền thống lưu trữ dữ liệu chi tiết; còn Blockchain hỗ trợ ghi nhận dấu vết, kiểm chứng tính toàn vẹn và truy xuất lịch sử giao dịch.
+
+Đây là cơ sở thực tiễn để tiếp tục nghiên cứu mô hình “Ứng dụng Blockchain trong quản lý và giao dịch bất động sản”.
