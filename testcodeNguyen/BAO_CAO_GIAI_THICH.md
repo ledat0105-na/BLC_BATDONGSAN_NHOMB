@@ -3,6 +3,8 @@
 
 ### Hệ thống Quản lý Bất Động Sản trên Blockchain
 
+# 📖 Báo cáo Giải thích Smart Contract — RealEstate.sol
+### Hệ thống Quản lý Bất Động Sản trên Blockchain
 > Dành cho người mới bắt đầu — giải thích từ nền tảng đến chi tiết code
 
 ---
@@ -19,6 +21,12 @@ Hãy tưởng tượng blockchain như một **cuốn sổ ghi chép khổng l�
 | **Bất biến**     | Dữ liệu đã ghi không thể xóa hay sửa                    |
 | **Minh bạch**     | Ai cũng có thể xem mọi giao dịch                           |
 | **Tự động**     | Hợp đồng tự thực thi khi thỏa điều kiện                |
+| Đặc điểm | Giải thích đơn giản |
+|---|---|
+| **Phi tập trung** | Không có một máy chủ trung tâm duy nhất nào kiểm soát |
+| **Bất biến** | Dữ liệu đã ghi không thể xóa hay sửa |
+| **Minh bạch** | Ai cũng có thể xem mọi giao dịch |
+| **Tự động** | Hợp đồng tự thực thi khi thỏa điều kiện |
 
 ### 1.2 Smart Contract là gì?
 
@@ -117,6 +125,19 @@ if (msg.sender != chuHopDong) revert KhongPhaoChuHopDong();
 | `ThanhToanKhongDu(required, sent)` | Gửi ETH ít hơn giá niêm yết                |
 | `ChuyenTienThatBai()`              | Lỗi kỹ thuật khi chuyển ETH                  |
 | `KhongCoPhiDeRut()`                | Rút phí khi contract không có ETH            |
+| Tên lỗi | Khi nào xảy ra |
+|---|---|
+| `KhongPhaoChuHopDong()` | Người thường cố làm việc của Cơ quan NN |
+| `KhongPhaoChuSoHuu(id)` | Cố thao tác BĐS không phải của mình |
+| `ChuSoHuuKhongTheMua(id)` | Chủ BĐS cố tự mua BĐS của mình |
+| `TaiSanKhongTonTai(id)` | Truy cập ID BĐS không tồn tại |
+| `DangNiemYetRoi()` | Niêm yết lần 2 khi đang niêm yết |
+| `TaiSanChuaNiemYet()` | Cố mua BĐS chưa được niêm yết |
+| `DaXacNhanRoi()` | Xác nhận lần 2 khi đã xác nhận |
+| `DangNiemYetHayHuyTruoc()` | Chuyển nhượng khi đang niêm yết |
+| `ThanhToanKhongDu(required, sent)` | Gửi ETH ít hơn giá niêm yết |
+| `ChuyenTienThatBai()` | Lỗi kỹ thuật khi chuyển ETH |
+| `KhongCoPhiDeRut()` | Rút phí khi contract không có ETH |
 
 ---
 
@@ -354,6 +375,14 @@ function dangKyTaiSan(
 
 **Ví dụ thực tế:**
 
+| Từ khóa | Ý nghĩa |
+|---|---|
+| `external` | Chỉ gọi từ bên ngoài contract (tiết kiệm gas hơn `public`) |
+| `calldata` | Dữ liệu đầu vào đọc trực tiếp, không copy vào bộ nhớ |
+| `unchecked` | Bỏ qua kiểm tra tràn số (safe vì không thể đăng ký 2^256 BĐS) |
+| `block.timestamp` | Thời gian của block hiện tại (số giây Unix) |
+
+**Ví dụ thực tế:**
 ```
 Alice gọi: dangKyTaiSan("123 Nguyen Hue, Q1", "80m2, 2PN", 10_ETH)
 
@@ -552,6 +581,11 @@ function rutPhiGiaoDich() external chiChuHopDong {
 | Giới hạn 2300 gas                   | Không giới hạn gas            |
 | Có thể thất bại với smart wallet | Hoạt động với mọi loại ví |
 | Cũ, không khuyến dùng             | Chuẩn hiện đại               |
+| `.transfer()` | `.call()` |
+|---|---|
+| Giới hạn 2300 gas | Không giới hạn gas |
+| Có thể thất bại với smart wallet | Hoạt động với mọi loại ví |
+| Cũ, không khuyến dùng | Chuẩn hiện đại |
 
 ---
 
@@ -641,6 +675,15 @@ Bob gọi chuyenNhuong(1, Charlie.address)
 | Modifiers            | 3           | Kiểm soát quyền truy cập     |
 | Functions (external) | 9           | Các chức năng chính          |
 | Functions (internal) | 1           | Hàm hỗ trợ nội bộ           |
+| Thành phần | Số lượng | Vai trò |
+|---|---|---|
+| Custom Errors | 14 | Thông báo lỗi tiết kiệm gas |
+| Structs | 2 | Khuôn mẫu dữ liệu |
+| State Variables | 6 | Lưu trữ trên blockchain |
+| Events | 4 | Thông báo sự kiện |
+| Modifiers | 3 | Kiểm soát quyền truy cập |
+| Functions (external) | 9 | Các chức năng chính |
+| Functions (internal) | 1 | Hàm hỗ trợ nội bộ |
 
 ---
 
@@ -664,6 +707,24 @@ Bob gọi chuyenNhuong(1, Charlie.address)
 | `unchecked`       | Bỏ qua kiểm tra tràn số (tiết kiệm gas, chỉ dùng khi an toàn)     |
 | `address(0)`      | Địa chỉ zero — nghĩa là "không có ai" / địa chỉ không hợp lệ |
 | `address(this)`   | Địa chỉ của chính contract đang chạy                                |
+| Từ khóa | Ý nghĩa |
+|---|---|
+| `public` | Ai cũng truy cập được từ trong lẫn ngoài |
+| `external` | Chỉ gọi từ bên ngoài contract (gas rẻ hơn `public`) |
+| `internal` | Chỉ gọi từ bên trong hoặc contract con kế thừa |
+| `view` | Chỉ đọc, không sửa — **miễn phí gas** khi gọi |
+| `payable` | Hàm/địa chỉ có thể nhận ETH |
+| `storage` | Biến tham chiếu trực tiếp tới blockchain (tốn gas) |
+| `memory` | Biến tạm thời trong hàm, xóa khi hàm kết thúc (rẻ hơn) |
+| `calldata` | Dữ liệu đầu vào, chỉ đọc, không copy (rẻ nhất) |
+| `msg.sender` | Địa chỉ ví của **người đang gọi hàm** |
+| `msg.value` | Số ETH (Wei) gửi kèm theo lệnh gọi hàm |
+| `block.timestamp` | Thời gian block hiện tại (giây Unix từ 01/01/1970) |
+| `emit` | Phát ra một Event lên blockchain |
+| `revert` | Hủy toàn bộ giao dịch, khôi phục trạng thái ban đầu |
+| `unchecked` | Bỏ qua kiểm tra tràn số (tiết kiệm gas, chỉ dùng khi an toàn) |
+| `address(0)` | Địa chỉ zero — nghĩa là "không có ai" / địa chỉ không hợp lệ |
+| `address(this)` | Địa chỉ của chính contract đang chạy |
 
 ---
 
