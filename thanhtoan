@@ -1,43 +1,65 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
-contract RealEstateEscrow {
+contract RealEstatePayment {
     struct Property {
         uint256 id;
         address payable seller;
-        uint256 price;
+        uint256 price; // Tính theo Wei
         bool isSold;
     }
 
     mapping(uint256 => Property) public properties;
 
-    event PropertyPurchased(uint256 indexed propertyId, address buyer, uint256 pricePaid);
-    event RefundIssued(address indexed buyer, uint256 amount);
+    event PropertyListed(uint256 indexed id, address seller, uint256 price);
+    event PropertyPurchased(uint256 indexed id, address buyer, uint256 pricePaid);
+    event ExcessRefunded(address indexed buyer, uint256 refundAmount);
 
-    function buyProperty(uint256 _propertyId) external payable {
-        Property storage prop = properties[_propertyId];
+    // Hàm tạo một Bất động sản mới để bán
+    function listProperty(uint256 _id, uint256 _priceInEther) external {
+        require(properties[_id].price == 0, "BDS da ton tai");
         
-        // Kiểm tra bất động sản hợp lệ
-        require(!prop.isSold, "Bat dong san da duoc ban");
-        
-        // Require 4: Kiểm tra điều kiện đủ tiền
-        require(msg.value >= prop.price, "Thanh toan thieu: So tien khong du de mua BDS");
+        // Đổi từ Ether sang Wei
+        uint256 priceInWei = _priceInEther * 1 ether;
 
-        // Cập nhật trạng thái
+        properties[_id] = Property({
+            id: _id,
+            seller: payable(msg.sender),
+            price: priceInWei,
+            isSold: false
+        });
+
+        emit PropertyListed(_id, msg.sender, priceInWei);
+    }
+
+    // Hàm mua Bất động sản và xử lý thanh toán
+    function buyProperty(uint256 _id) external payable {
+        Property storage prop = properties[_id];
+
+        require(prop.price > 0, "BDS khong ton tai");
+        require(!prop.isSold, "BDS da duoc ban");
+        
+        // 1. Kiểm tra điều kiện đủ tiền (Require 4)
+        require(msg.value >= prop.price, "Thanh toan thieu: So tien khong du");
+
+        // 2. Cập nhật trạng thái
         prop.isSold = true;
 
-        // Xử lý trường hợp thanh toán dư (Refund tiền thừa)
-        if (msg.value > prop.price) {
-            uint256 refundAmount = msg.value - prop.price;
-            (bool refundSuccess, ) = payable(msg.sender).call{value: refundAmount}("");
-            require(refundSuccess, "Hoan tien du that bai");
-            emit RefundIssued(msg.sender, refundAmount);
+        uint256 price = prop.price;
+        uint256 excessAmount = 0;
+
+        // 3. Xử lý trường hợp dư tiền: Hoàn lại tiền thừa cho Người mua
+        if (msg.value > price) {
+            excessAmount = msg.value - price;
+            (bool refundSuccess, ) = payable(msg.sender).call{value: excessAmount}("");
+            require(refundSuccess, "Hoan tien thua that bai");
+            emit ExcessRefunded(msg.sender, excessAmount);
         }
 
-        // Chuyển đúng số tiền giá trị BĐS cho người bán (hoặc giữ lại Escrow)
-        (bool paySuccess, ) = prop.seller.call{value: prop.price}("");
+        // 4. Chuyển tiền cho Người bán
+        (bool paySuccess, ) = prop.seller.call{value: price}("");
         require(paySuccess, "Chuyen tien cho nguoi ban that bai");
 
-        emit PropertyPurchased(_propertyId, msg.sender, prop.price);
+        emit PropertyPurchased(_id, msg.sender, price);
     }
 }
